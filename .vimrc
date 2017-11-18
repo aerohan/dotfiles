@@ -48,6 +48,9 @@ let g:ctrlp_map = '<c-p>'
 noremap <leader>p :CtrlP ~/Develop/
 noremap <leader>b :CtrlPBuffer<CR>
 
+"auto write brackets for functions/loops
+nnoremap <leader>[ o{<CR>}<Esc>O
+
 "tab navigation
 nnoremap H gT
 nnoremap L gt
