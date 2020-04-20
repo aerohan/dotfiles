@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'flazz/vim-colorschemes'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -15,7 +16,7 @@ set t_Co=256
 colorscheme Tomorrow-Night-Eighties
 
 "wildmenu
-set wildmode=longest,full
+set wildmode=longest,list,full
 set wildmenu
 
 "space as leader key
@@ -24,8 +25,8 @@ let mapleader = "\<Space>"
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
+set expandtab
 
-"move around splits
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -36,17 +37,20 @@ noremap <C-l> <C-w>l
 "inoremap <C-U> <Esc>:call SmoothScroll(1)<Enter>i
 "inoremap <C-D> <Esc>:call SmoothScroll(0)<Enter>i
 
-"smooth scrolling
+"scroll customization
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10 , 1)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 1)<CR>
+noremap <C-g> <C-U>
+noremap <C-f> <C-D>
 
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
 "CtrlP customization
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
-noremap <leader>p :CtrlP ~/Develop/
+noremap <leader>p :CtrlP %:p<CR>
 noremap <leader>b :CtrlPBuffer<CR>
+let g:netrw_keepdir=0
 
 "auto write brackets for functions/loops
 nnoremap <leader>[ o{<CR>}<Esc>O
@@ -55,12 +59,36 @@ nnoremap <leader>[ o{<CR>}<Esc>O
 nnoremap H gT
 nnoremap L gt
 
+"file navigation
+nnoremap ZZ zt
+
+"copy path into clipboard
+"nmap cp :let @* = expand("%:p")<CR>
+
+"enable calling functions in bashrc
+"set shellcmdflag=-ic
+
+"swap file directory
+"set directory=$HOME/.vim/swapfiles//
+
 "misc. remaps, vim-sensible
 nnoremap Y y$
 set incsearch
 "set hlsearch
+"map <leader>n :noh<CR>
 set cursorline
+
+"transparent background
+hi Normal guibg=NONE ctermbg=NONE
+set cursorline!
 
 set timeoutlen=1000 ttimeoutlen=10
 
 set nu
+
+" horizontal navigation for long lines
+map <leader>l 10zl 
+map <leader>h 10zh
+
+" set ipdb breakpoint
+map <leader>i Oimport ipdb; ipdb.set_trace()<Esc><CR>
