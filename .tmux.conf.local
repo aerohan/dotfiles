@@ -295,6 +295,6 @@ bind c new-window -a
 bind e new-window
 bind t setw synchronize-panes
 
-bind -n M-d split-window -c "#{pane_current_path}"
-bind -n M-D split-window -h -c "#{pane_current_path}"
-bind -n M-w kill-pane
+bind -n M-D split-window -c "#{pane_current_path}"
+bind -n M-d split-window -h -c "#{pane_current_path}"
+bind -n M-w confirm-before kill-pane

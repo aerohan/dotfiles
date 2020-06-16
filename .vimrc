@@ -7,16 +7,19 @@ Plug 'flazz/vim-colorschemes'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'JuliaEditorSupport/julia-vim'
 
 call plug#end()
 
 "colorscheme
 syntax on
 set t_Co=256
-colorscheme Tomorrow-Night-Eighties
+colorscheme Tomorrow-Night-RJP
 
 "wildmenu
-set wildmode=longest,list,full
+set wildmode=longest,full
 set wildmenu
 
 "space as leader key
@@ -45,12 +48,20 @@ noremap <C-f> <C-D>
 
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
-"CtrlP customization
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+"fzf customization
 let g:ctrlp_map = '<c-p>'
-noremap <leader>p :CtrlP %:p<CR>
-noremap <leader>b :CtrlPBuffer<CR>
+noremap <C-p> :Files<CR>
+noremap <leader>p :GFiles<CR>
+noremap <leader>b :Buffers<CR>
+noremap <leader>/ :BLines<CR>
+noremap <leader>? :Lines<CR>
+noremap <leader>g :Rg!<CR>
 let g:netrw_keepdir=0
+
+"newline without comment continuation
+nnoremap <Leader>o o<Esc>^Da
+nnoremap <Leader>O O<Esc>^Da
+
 
 "auto write brackets for functions/loops
 nnoremap <leader>[ o{<CR>}<Esc>O
@@ -74,8 +85,7 @@ nnoremap ZZ zt
 "misc. remaps, vim-sensible
 nnoremap Y y$
 set incsearch
-"set hlsearch
-"map <leader>n :noh<CR>
+set nohlsearch
 set cursorline
 
 "transparent background
