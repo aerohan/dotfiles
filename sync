@@ -1,0 +1,4 @@
+#!/bin/bash
+cp ~/.vimrc .
+cp ~/.emacs.d/init.el .
+cp -r ~/.emacs.d/custom .
