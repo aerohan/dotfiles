@@ -100,5 +100,6 @@ set nu
 map <leader>l 10zl 
 map <leader>h 10zh
 
-" set ipdb breakpoint
-map <leader>i Oimport ipdb; ipdb.set_trace()<Esc><CR>
+" debuggers
+autocmd FileType python map <buffer> <leader>i Oimport ipdb; ipdb.set_trace()<Esc><CR>
+autocmd FileType julia map <buffer> <leader>i OMain.Infiltrator.@infiltrate<Esc><CR>

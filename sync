@@ -1,4 +1,4 @@
 #!/bin/bash
 cp ~/.vimrc .
-cp ~/.emacs.d/init.el .
+cp ~/.emacs.d/init.el .emacs.d
 cp -r ~/.emacs.d/custom .
