@@ -52,6 +52,8 @@
 (define-key evil-normal-state-map (kbd "C-f") 'evil-scroll-down)
 (define-key evil-visual-state-map (kbd "C-f") 'evil-scroll-down)
 
+(define-key evil-normal-state-map (kbd "-") 'dired-jump)
+
 (global-display-line-numbers-mode)
 
 (defun on-after-init ()
@@ -96,6 +98,14 @@
     (evil-append-line 0)
     )
 (global-set-key (kbd "C-c o") 'next-heading-evil)
+
+(defun insert-heading-evil ()
+    "Insert heading with auto append mode (evil)"
+    (interactive)
+    (evil-append-line 0)
+    (org-meta-return)
+    )
+(global-set-key (kbd "C-c O") 'insert-heading-evil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
